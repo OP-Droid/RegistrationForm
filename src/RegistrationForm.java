@@ -196,4 +196,72 @@ class MyFrame
         resadd.setFont(new Font("Arial", Font.PLAIN, 15));
         resadd.setSize(200, 75);
         resadd.setLocation(580, 175);
-        resadd.setLineWrap(
+        resadd.setLineWrap(true);
+        c.add(resadd);
+ 
+        setVisible(true);
+    }
+ 
+    // method actionPerformed()
+    // to get the action performed
+    // by the user and act accordingly
+    public void actionPerformed(ActionEvent e)
+    {
+        if (e.getSource() == sub) {
+            if (term.isSelected()) {
+                String data1;
+                String data
+                    = "Name : "
+                      + tname.getText() + "\n"
+                      + "Mobile : "
+                      + tmno.getText() + "\n";
+                if (male.isSelected())
+                    data1 = "Gender : Male"
+                            + "\n";
+                else
+                    data1 = "Gender : Female"
+                            + "\n";
+                String data2
+                    = "DOB : "
+                      + (String)date.getSelectedItem()
+                      + "/" + (String)month.getSelectedItem()
+                      + "/" + (String)year.getSelectedItem()
+                      + "\n";
+ 
+                String data3 = "Address : " + tadd.getText();
+                tout.setText(data + data1 + data2 + data3);
+                tout.setEditable(false);
+                res.setText("Registration Successfully..");
+            }
+            else {
+                tout.setText("");
+                resadd.setText("");
+                res.setText("Please accept the"
+                            + " terms & conditions..");
+            }
+        }
+ 
+        else if (e.getSource() == reset) {
+            String def = "";
+            tname.setText(def);
+            tadd.setText(def);
+            tmno.setText(def);
+            res.setText(def);
+            tout.setText(def);
+            term.setSelected(false);
+            date.setSelectedIndex(0);
+            month.setSelectedIndex(0);
+            year.setSelectedIndex(0);
+            resadd.setText(def);
+        }
+    }
+}
+ 
+// Driver Code
+class Registration {
+ 
+    public static void main(String[] args) throws Exception
+    {
+        MyFrame f = new MyFrame();
+    }
+}
